@@ -13,13 +13,12 @@ class BookController extends Controller
         $books = Book::query()->get();
         return $books;
     }
-
     public function store(StoreBookRequest $request){
         $book = Book::query()->create($request->validated());
         return $book;
     }
     public function update(UpdateBookRequest $request,Book $book){
-       $book = $book->update($request->validated());
+        $book->update($request->validated());
         return $book;
     }
     public function show(Book $book){

@@ -23,7 +23,7 @@ class UpdateBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-             'title'=>['nullable','string'],
+            'title'=>['nullable','string'],
             'author'=>['nullable','string'],
             'published_year'=>['nullable','integer','min:1900','max:2100'],
             'is_available'=>['boolean']
