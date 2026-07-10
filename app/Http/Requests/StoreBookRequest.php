@@ -26,7 +26,11 @@ class StoreBookRequest extends FormRequest
             'title'=>['required','string'],
             'author'=>['required','string'],
             'published_year'=>['required','integer','min:1900','max:2100'],
-            'is_available'=>['boolean']
+            'is_available'=>['boolean'],
+            'cover_color'=>['required','string'],
+            'cover_format'=>['required','in:hardcover,paperback,ebook'],
+            'categories' => ['nullable', 'array'],
+            'categories.*' => ['exists:categories,id']
         ];
     }
 }

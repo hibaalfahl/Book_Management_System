@@ -8,6 +8,9 @@
       <th scope="col">Author</th>
       <th scope="col">Published Year</th>
       <th scope="col">Is Available </th>
+      <th scope="col">Cover Color</th>
+      <th scope="col">Cover Format</th>
+      <th scope="col">Category</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -25,12 +28,16 @@
         Not Available  
       @endif
     </td>
-    <td><x-button type="submit"><a href="{{ route('edit',$book->id) }}">Edit</a></x-button> <br><br>
+    <td>{{ $book->cover->color }}</td>
+    <td>{{ $book->cover->format }}</td>
+    <td>{{ $book->categories->pluck('name')->join(', ') }}</td>
+    <td><x-button type="submit"><a href="{{ route('edit',$book->id) }}">Edit</a></x-button> 
     <form action="{{ route('destroy',$book->id) }}" method="POST">
       @csrf
       @method('DELETE')
       <x-button type="submit">Delete</x-button>
-    </form>
+    </form> 
+    <x-button> <a href="{{ route('reviews',$book->id) }}">View reviews</a></x-button>
     </td>
     </tr>
     @endforeach

@@ -26,7 +26,11 @@ class UpdateBookRequest extends FormRequest
             'title'=>['nullable','string'],
             'author'=>['nullable','string'],
             'published_year'=>['nullable','integer','min:1900','max:2100'],
-            'is_available'=>['boolean']
+            'is_available'=>['boolean'],
+            'cover_color'=>['nullable','string'],
+            'cover_format'=>['nullable','in:hardcover,paperback,ebook'],
+            'categories' => ['nullable', 'array'],
+            'categories.*' => ['exists:categories,id'],
         ];
     }
 }
